@@ -1,4 +1,4 @@
-package entities;
+package com.example.apiJPA.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

@@ -1,10 +1,12 @@
-package services;
+package com.example.apiJPA.services;
 
-import entities.Costume;
+import com.example.apiJPA.entities.Costume;
+import com.example.apiJPA.entities.YearAmount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.CostumeRepository;
+import com.example.apiJPA.repositories.CostumeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,5 +72,14 @@ public class CostumeService {
             return true;
         }).orElse(false);
         return aBoolean;
+    }
+
+    public List<YearAmount> getTopCostumeByYears(){
+        List<Object[]> report = costumeRepository.getTopByYear();
+        List<YearAmount> res = new ArrayList<>();
+        for (int i=0; i<report.size(); i++){
+            res.add(new YearAmount((int)report.get(i)[0], (int)(long)report.get(i)[1]));
+        }
+        return res;
     }
 }

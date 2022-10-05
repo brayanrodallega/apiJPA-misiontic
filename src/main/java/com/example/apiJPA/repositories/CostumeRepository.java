@@ -1,6 +1,6 @@
-package repositories;
+package com.example.apiJPA.repositories;
 
-import entities.Costume;
+import com.example.apiJPA.entities.Costume;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,5 +30,9 @@ public class CostumeRepository {
 
     public void delete(Costume costume) {
         costumesCrudRepository.delete(costume);
+    }
+
+    public List<Object[]> getTopByYear(){
+        return costumesCrudRepository.countTotalCostumeByYear();
     }
 }

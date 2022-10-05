@@ -1,9 +1,10 @@
-package controllers;
+package com.example.apiJPA.controllers;
 
-import entities.Costume;
+import com.example.apiJPA.entities.Costume;
+import com.example.apiJPA.entities.YearAmount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.CostumeService;
+import com.example.apiJPA.services.CostumeService;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,5 +38,10 @@ public class CostumeController {
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int id){
         return costumeService.deleteCostume(id);
+    }
+
+    @GetMapping("/report")
+    public List<YearAmount> getReport(){
+        return costumeService.getTopCostumeByYears();
     }
 }
